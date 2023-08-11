@@ -15,7 +15,7 @@ resource "aws_rds_cluster" "main" {
   storage_encrypted = true
   kms_key_id = var.kms_key_arn
 }
-resource "aws_rds_cluster" "main" {
+resource "aws_rds_cluster_instance" "main" {
   count                  = var.instance_count
   identifier             = "${var.component}-${var.env}-instance-${count.index}"
   cluster_identifier     = aws_rds_cluster.main.id
